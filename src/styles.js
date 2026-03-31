@@ -75,7 +75,6 @@ export const ButtonText = styled.Text`
 export const CadastroContainer = styled.View`
   flex: 1;
   align-items: center;
-  justify-content: center;
 `;
 
 export const CadastroInput = styled.TextInput`
