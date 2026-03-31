@@ -4,6 +4,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -57,6 +58,10 @@ const Login = () => {
             keyboardShouldPersistTaps="handled"
           >
             <FormContainer>
+              <Image
+                source={require("../../assets/logo-pokedex-option-2.png")}
+                style={{ width: 260, height: 130, resizeMode: "contain", marginBottom: 24 }}
+              />
               <InputRow>
                 <InputHalf
                   placeholder="Nome"
