@@ -12,16 +12,16 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="login"
           component={Login}
           options={{
-            title: "Login",
+            title: "PokéDex",
             headerTitleAlign: "center",
-            headerTitleStyle: { color: "#fff", fontWeight: "bold" },
+            headerTitleStyle: { color: "#f36404", fontWeight: "bold" },
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="cadastro"
           component={Cadastro}
           options={{
