@@ -1,64 +1,72 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { RectButton } from "react-native-gesture-handler";
 
-// Estilos de Login
+// ========== Estilos de Login ==========
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-  },
-  backgroundImage: {
-    resizeMode: "cover",
-    flex: 1,
-  },
-  formContainer: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 30,
-  },
-  inputRow: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
-    marginVertical: 12,
-  },
-  inputHalf: {
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    width: "48%",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    backgroundColor: "#fff",
-    fontSize: 14,
-  },
-  input: {
-    marginVertical: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    width: "100%",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    backgroundColor: "#fff",
-    fontSize: 14,
-  },
-  button: {
-    marginVertical: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    backgroundColor: "#007BFF",
-    borderRadius: 8,
-    width: "100%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-});
+export const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BackgroundImage = styled.ImageBackground`
+  resize-mode: cover;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+export const FormContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-horizontal: 20px;
+  padding-vertical: 30px;
+`;
+
+export const InputRow = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-vertical: 12px;
+`;
+
+export const InputHalf = styled.TextInput`
+  padding-vertical: 12px;
+  padding-horizontal: 15px;
+  width: 48%;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #ccc;
+  background-color: #fff;
+  font-size: 14px;
+`;
+
+export const Input = styled.TextInput`
+  margin-vertical: 12px;
+  padding-vertical: 12px;
+  padding-horizontal: 15px;
+  width: 100%;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #ccc;
+  background-color: #fff;
+  font-size: 14px;
+`;
+
+export const Button = styled(RectButton)`
+  margin-vertical: 12px;
+  padding-vertical: 12px;
+  padding-horizontal: 20px;
+  background-color: #007bff;
+  border-radius: 8px;
+  width: 100%;
+  align-items: center;
+`;
+
+export const ButtonText = styled.Text`
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+`;

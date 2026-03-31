@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
   Alert,
-  ImageBackground,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { styles } from "../styles";
+import {
+  Container,
+  BackgroundImage,
+  FormContainer,
+  InputRow,
+  InputHalf,
+  Button,
+  ButtonText,
+} from "../styles";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,47 +42,45 @@ const Login = () => {
   };
 
   return (
-    <ImageBackground
-      source={require("../../assets/bg-login.jpg")}
-      style={styles.container}
-      imageStyle={styles.backgroundImage}
-    >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.container}
-      >
-        <ScrollView
-          contentContainerStyle={styles.formContainer}
-          scrollEnabled={true}
-          keyboardShouldPersistTaps="handled"
+    <Container>
+      <BackgroundImage source={require("../../assets/bg-login.jpg")}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
         >
-          <View style={styles.inputRow}>
-            <TextInput
-              style={styles.inputHalf}
-              placeholder="E-mail"
-              value={email}
-              onChangeText={setEmail}
-              placeholderTextColor="#999"
-            />
-            <TextInput
-              style={styles.inputHalf}
-              placeholder="Senha"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={true}
-              placeholderTextColor="#999"
-            />
-          </View>
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Entrar</Text>
-          </TouchableOpacity>
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            scrollEnabled={true}
+            keyboardShouldPersistTaps="handled"
+          >
+            <FormContainer>
+              <InputRow>
+                <InputHalf
+                  placeholder="E-mail"
+                  value={email}
+                  onChangeText={setEmail}
+                  placeholderTextColor="#999"
+                />
+                <InputHalf
+                  placeholder="Senha"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry={true}
+                  placeholderTextColor="#999"
+                />
+              </InputRow>
+              <Button onPress={handleLogin}>
+                <ButtonText>Entrar</ButtonText>
+              </Button>
 
-          <TouchableOpacity style={styles.button} onPress={handleCadastro}>
-            <Text style={styles.buttonText}>Cadastrar</Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </ImageBackground>
+              <Button onPress={handleCadastro}>
+                <ButtonText>Cadastrar</ButtonText>
+              </Button>
+            </FormContainer>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </BackgroundImage>
+    </Container>
   );
 };
 
