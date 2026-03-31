@@ -31,7 +31,7 @@ const Login = () => {
 
     const userJson = JSON.parse(user);
     if (userJson.email === email && userJson.password === password) {
-      navigation.navigate("main");
+      navigation.navigate("home");
     } else {
       Alert.alert("Erro", "E-mail ou senha incorretos.");
     }
