@@ -20,9 +20,8 @@ export const FormContainer = styled.View`
   flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding-horizontal: 20px;
-  padding-vertical: 30px;
+  padding-vertical: 20px;
 `;
 
 export const InputRow = styled.View`
