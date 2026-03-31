@@ -56,7 +56,7 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled(RectButton)`
-  margin-vertical: 12px;
+  margin-vertical: 8px;
   padding-vertical: 12px;
   padding-horizontal: 20px;
   background-color: #007bff;
@@ -84,22 +84,20 @@ export const CadastroInput = styled.TextInput`
   border-color: #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin-vertical: 10px;
+  margin-vertical: 8px;
   width: 80%;
   background-color: #f9f9f9;
 `;
 
 export const CadastroButton = styled(RectButton)`
   background-color: #007bff;
-  border-radius: 5px;
-  padding: 15px;
+  border-radius: 8px;
+  padding: 12px;
   width: 80%;
   align-items: center;
-  margin-top: 8px;
 `;
 
 export const CadastroButtonText = styled.Text`
   color: #fff;
   font-weight: bold;
-  text-transform: uppercase;
 `;
