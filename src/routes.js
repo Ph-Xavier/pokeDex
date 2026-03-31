@@ -21,16 +21,16 @@ export default function Routes() {
             headerTitleStyle: { color: "#f36404", fontWeight: "bold" },
           }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="cadastro"
           component={Cadastro}
           options={{
             title: "Cadastro Pokédex",
             headerTitleAlign: "center",
-            headerTitleStyle: { color: "#fff", fontWeight: "bold" },
+            headerTitleStyle: { color: "#f36404", fontWeight: "bold" },
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="home"
           component={Home}
           options={{

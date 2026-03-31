@@ -70,3 +70,36 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+// ========== Estilos de Cadastro ==========
+
+export const CadastroContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CadastroInput = styled.TextInput`
+  border-width: 1px;
+  border-color: #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-vertical: 10px;
+  width: 80%;
+  background-color: #f9f9f9;
+`;
+
+export const CadastroButton = styled(RectButton)`
+  background-color: #007bff;
+  border-radius: 5px;
+  padding: 15px;
+  width: 80%;
+  align-items: center;
+  margin-top: 8px;
+`;
+
+export const CadastroButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+`;
