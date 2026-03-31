@@ -9,20 +9,20 @@ import {
 } from "../styles";
 
 export default class Cadastro extends Component {
-  state = { email: "", password: "" };
+  state = { nome: "", password: "" };
 
   handleCadastro = async () => {
-    const { email, password } = this.state;
+    const { nome, password } = this.state;
 
-    if (!email || !password) {
+    if (!nome || !password) {
       alert("Preencha todos os campos.");
       return;
     }
 
-    const user = { email, password };
+    const user = { nome, password };
 
     await AsyncStorage.setItem("user", JSON.stringify(user));
-    alert("Usuário cadastrado com sucesso!");
+    alert("Treinador cadastrado com sucesso!");
     this.props.navigation.navigate("login");
   };
 
@@ -31,9 +31,9 @@ export default class Cadastro extends Component {
       <BackgroundImage source={require("../../assets/bg-login.jpg")}>
         <CadastroContainer>
           <CadastroInput
-            placeholder="Email"
-            value={this.state.email}
-            onChangeText={(email) => this.setState({ email })}
+            placeholder="Nome de Treinador"
+            value={this.state.nome}
+            onChangeText={(nome) => this.setState({ nome })}
           />
           <CadastroInput
             placeholder="Senha"

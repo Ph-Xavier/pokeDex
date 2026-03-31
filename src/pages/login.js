@@ -18,7 +18,7 @@ import {
 } from "../styles";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [nome, setNome] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
@@ -30,10 +30,10 @@ const Login = () => {
     }
 
     const userJson = JSON.parse(user);
-    if (userJson.email === email && userJson.password === password) {
+    if (userJson.nome === nome && userJson.password === password) {
       navigation.navigate("home");
     } else {
-      Alert.alert("Erro", "E-mail ou senha incorretos.");
+      Alert.alert("Erro", "Nome ou senha incorretos.");
     }
   };
 
@@ -56,9 +56,9 @@ const Login = () => {
             <FormContainer>
               <InputRow>
                 <InputHalf
-                  placeholder="E-mail"
-                  value={email}
-                  onChangeText={setEmail}
+                  placeholder="Nome"
+                  value={nome}
+                  onChangeText={setNome}
                   placeholderTextColor="#999"
                 />
                 <InputHalf
