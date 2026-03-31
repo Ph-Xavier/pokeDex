@@ -25,7 +25,10 @@ const Login = () => {
   const handleLogin = async () => {
     const user = await AsyncStorage.getItem("user");
     if (!user) {
-      Alert.alert("Erro", "Nenhum usuário cadastrado. Por favor, cadastre-se.");
+      Alert.alert(
+        "Erro",
+        "Nenhum treinador cadastrado. Por favor, cadastre-se.",
+      );
       return;
     }
 
