@@ -103,3 +103,109 @@ export const CadastroButtonText = styled.Text`
   font-weight: bold;
   text-transform: uppercase;
 `;
+
+// ========== Estilos de Home ==========
+
+export const HomeContainer = styled.View`
+  flex: 1;
+  background-color: #cc0000;
+`;
+
+export const Form = styled.View`
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 16px;
+  background-color: #aa0000;
+  border-bottom-width: 3px;
+  border-bottom-color: #880000;
+`;
+
+export const HomeInput = styled.TextInput`
+  flex: 1;
+  height: 46px;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+  padding-horizontal: 14px;
+  color: #00ff41;
+  font-size: 13px;
+  border-width: 2px;
+  border-color: #0d0d1a;
+  margin-right: 10px;
+`;
+
+export const SubmitButton = styled(RectButton)`
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: #cc0000;
+  align-items: center;
+  justify-content: center;
+  border-width: 3px;
+  border-color: #ff4444;
+  elevation: 4;
+  opacity: ${(props) => (props.loading ? 0.6 : 1)};
+`;
+
+export const List = styled.FlatList`
+  margin-top: 12px;
+  padding-horizontal: 12px;
+`;
+
+export const User = styled.View`
+  background-color: #1a1a2e;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  border-width: 1px;
+  border-color: #2a2a4e;
+  align-items: center;
+`;
+
+export const Avatar = styled.Image`
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  background-color: #0d0d1a;
+  border-width: 2px;
+  border-color: #2a2a4e;
+`;
+
+export const Name = styled.Text`
+  font-size: 14px;
+  color: #00ff41;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+`;
+
+export const Bio = styled.Text`
+  font-size: 12px;
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+`;
+
+export const ProfileButton = styled(RectButton)`
+  background-color: #cc0000;
+  border-radius: 8px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding-horizontal: 20px;
+  margin-top: 6px;
+  width: 100%;
+  border-width: 2px;
+  border-color: #ff4444;
+`;
+
+export const ProfileButtonText = styled.Text`
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+`;
+

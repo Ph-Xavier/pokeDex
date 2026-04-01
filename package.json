@@ -9,12 +9,15 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/press-start-2p": "^0.4.1",
+    "@expo-google-fonts/share-tech-mono": "^0.4.1",
     "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^7.2.0",
     "@react-navigation/stack": "^7.8.7",
     "axios": "^1.13.6",
     "expo": "~55.0.8",
+    "expo-font": "~55.0.4",
     "expo-status-bar": "~55.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",

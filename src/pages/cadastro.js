@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   BackgroundImage,
@@ -30,6 +31,10 @@ export default class Cadastro extends Component {
     return (
       <BackgroundImage source={require("../../assets/bg-login.jpg")}>
         <CadastroContainer>
+          <Image
+            source={require("../../assets/logo-pokedex-option-2.png")}
+            style={{ width: 260, height: 130, resizeMode: "contain", marginBottom: 24 }}
+          />
           <CadastroInput
             placeholder="Nome de Treinador"
             value={this.state.nome}

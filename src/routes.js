@@ -11,13 +11,18 @@ const Stack = createStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#AA0000" },
+          headerTintColor: "#FFD700",
+          headerTitleAlign: "center",
+        }}
+      >
         <Stack.Screen
           name="login"
           component={Login}
           options={{
             title: "PokéDex",
-            headerTitleAlign: "center",
             headerTitleStyle: { color: "#f36404", fontWeight: "bold" },
           }}
         />
@@ -26,29 +31,28 @@ export default function Routes() {
           component={Cadastro}
           options={{
             title: "Cadastro Pokédex",
-            headerTitleAlign: "center",
             headerTitleStyle: { color: "#f36404", fontWeight: "bold" },
           }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="home"
           component={Home}
           options={{
-            title: "Pokédex",
-            headerTitleAlign: "center",
-            headerTitleStyle: { color: "#fff", fontWeight: "bold" },
+            title: "POKÉDEX",
+            headerTitleStyle: { color: "#FFD700", fontWeight: "bold", letterSpacing: 2 },
+            headerBackVisible: false,
           }}
         />
         <Stack.Screen
           name="pokemon"
           component={Pokemon}
           options={{
-            title: "Pokémon",
-            headerTitleAlign: "center",
-            headerTitleStyle: { color: "#fff", fontWeight: "bold" },
+            title: "POKÉMON",
+            headerTitleStyle: { color: "#FFD700", fontWeight: "bold" },
           }}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
