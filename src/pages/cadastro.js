@@ -33,7 +33,12 @@ export default class Cadastro extends Component {
         <CadastroContainer>
           <Image
             source={require("../../assets/logo-pokedex-option-2.png")}
-            style={{ width: 260, height: 130, resizeMode: "contain", marginBottom: 24 }}
+            style={{
+              width: 260,
+              height: 130,
+              resizeMode: "contain",
+              marginBottom: 24,
+            }}
           />
           <CadastroInput
             placeholder="Nome de Treinador"
