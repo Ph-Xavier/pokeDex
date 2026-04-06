@@ -1,41 +1,86 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { Component } from "react";
+import api from "../services/api.js";
+import {
+  Container,
+  Header,
+  AvatarPerfil,
+  NamePerfil,
+  BioPerfil,
+  Moves,
+  MoveItem,
+  MoveSlot,
+  MoveSlotText,
+  MoveInfo,
+  MoveName,
+  MoveType,
+} from "../styles.js";
 
-// Placeholder — tela de detalhe do Pokémon (a construir)
-export default function Pokemon({ route }) {
-  const { pokemonId, pokemonName } = route.params || {};
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>#{String(pokemonId).padStart(3, "0")}</Text>
-      <Text style={styles.name}>{pokemonName?.toUpperCase()}</Text>
-      <Text style={styles.hint}>TELA DE DETALHE{"\n"}EM CONSTRUÇÃO...</Text>
-    </View>
-  );
+function getRarity(captureRate, isLegendary, isMythical) {
+  if (isMythical)   return "◆ MYTHICAL";
+  if (isLegendary)  return "★ LEGENDARY";
+  if (captureRate <= 45)  return "▲ RARE";
+  if (captureRate <= 120) return "● UNCOMMON";
+  return "○ COMMON";
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#1a1a2e",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontFamily: "monospace",
-    fontSize: 20,
-    color: "#FFD700",
-    marginBottom: 8,
-  },
-  name: {
-    fontFamily: "monospace",
-    fontSize: 24,
-    color: "#00FF41",
-    marginBottom: 24,
-  },
-  hint: {
-    fontFamily: "monospace",
-    fontSize: 12,
-    color: "#444",
-    textAlign: "center",
-  },
-});
+export default class Pokemon extends Component {
+  state = {
+    moves: [],
+    rarity: "",
+  };
+
+  async componentDidMount() {
+    const { route } = this.props;
+    const { pokemon } = route.params;
+
+    const [pokeRes, speciesRes] = await Promise.all([
+      api.get(`/api/v2/pokemon/${pokemon.login}`),
+      api.get(`/api/v2/pokemon-species/${pokemon.login}`),
+    ]);
+
+    const rarity = getRarity(
+      speciesRes.data.capture_rate,
+      speciesRes.data.is_legendary,
+      speciesRes.data.is_mythical,
+    );
+
+    this.setState({
+      moves: pokeRes.data.moves.slice(0, 4),
+      rarity,
+    });
+  }
+
+  render() {
+    const { route } = this.props;
+    const { pokemon } = route.params;
+    const { moves, rarity } = this.state;
+
+    return (
+      <Container>
+        <Header>
+          <AvatarPerfil source={{ uri: pokemon.avatar }} />
+          <NamePerfil>{pokemon.name}</NamePerfil>
+          <BioPerfil>{pokemon.bio}</BioPerfil>
+          <BioPerfil>{rarity}</BioPerfil>
+        </Header>
+
+        <Moves
+          showsVerticalScrollIndicator={false}
+          data={moves}
+          keyExtractor={(move) => move.move.name}
+          renderItem={({ item, index }) => (
+            <MoveItem>
+              <MoveSlot>
+                <MoveSlotText>{index + 1}</MoveSlotText>
+              </MoveSlot>
+              <MoveInfo>
+                <MoveName>{item.move.name.replace(/-/g, " ").toUpperCase()}</MoveName>
+                <MoveType>MOVE</MoveType>
+              </MoveInfo>
+            </MoveItem>
+          )}
+        />
+      </Container>
+    );
+  }
+}

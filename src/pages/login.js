@@ -47,7 +47,10 @@ const Login = () => {
 
   return (
     <Container>
-      <BackgroundImage source={require("../../assets/bg-login.jpg")}>
+      <BackgroundImage
+        source={require("../../assets/bg-login.png")}
+        resizeMode="cover"
+      >
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={{ flex: 1 }}
@@ -67,14 +70,14 @@ const Login = () => {
                   placeholder="Nome"
                   value={nome}
                   onChangeText={setNome}
-                  placeholderTextColor="#999"
+                  placeholderTextColor="#9094A6"
                 />
                 <InputHalf
                   placeholder="Senha"
                   value={password}
                   onChangeText={setPassword}
                   secureTextEntry={true}
-                  placeholderTextColor="#999"
+                  placeholderTextColor="#9094A6"
                 />
               </InputRow>
               <Button onPress={handleLogin}>

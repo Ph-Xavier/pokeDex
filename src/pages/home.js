@@ -41,9 +41,10 @@ export default class Home extends Component {
   handleAddUser = async () => {
     try {
       const { newUser, users } = this.state;
+      if (!newUser.trim()) return;
       this.setState({ loading: true });
 
-      const response = await api.get(`/api/v2/pokemon/${newUser.toLowerCase()}`);
+      const response = await api.get(`/api/v2/pokemon/${newUser.toLowerCase().trim()}`);
 
       if (users.find((u) => u.login === response.data.name)) {
         alert("Pokémon já adicionado");
@@ -74,7 +75,6 @@ export default class Home extends Component {
 
   render() {
     const { newUser, users, loading } = this.state;
-
     return (
       <HomeContainer>
         <Form>
@@ -82,7 +82,7 @@ export default class Home extends Component {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="NOME DO POKÉMON..."
-            placeholderTextColor="#2e2e4e"
+            placeholderTextColor="#4A4E69"
             value={newUser}
             onChangeText={(text) => this.setState({ newUser: text })}
             returnKeyType="send"
@@ -90,9 +90,9 @@ export default class Home extends Component {
           />
           <SubmitButton loading={loading} onPress={this.handleAddUser}>
             {loading ? (
-              <ActivityIndicator color="#FFD700" />
+              <ActivityIndicator color="#FBD743" />
             ) : (
-              <Icon name="add" size={24} color="#FFD700" />
+              <Icon name="add" size={20} color="#FBD743" />
             )}
           </SubmitButton>
         </Form>
@@ -106,7 +106,6 @@ export default class Home extends Component {
               <Avatar source={{ uri: item.avatar }} resizeMode="contain" />
               <Name>{item.name}</Name>
               <Bio>{item.bio}</Bio>
-
               <ProfileButton
                 onPress={() =>
                   this.props.navigation.navigate("pokemon", { pokemon: item })
@@ -114,16 +113,15 @@ export default class Home extends Component {
               >
                 <ProfileButtonText>Ver Pokémon</ProfileButtonText>
               </ProfileButton>
-
               <ProfileButton
                 onPress={() =>
                   this.setState({
                     users: this.state.users.filter((u) => u.login !== item.login),
                   })
                 }
-                style={{ backgroundColor: "#1a0000", borderColor: "#550000" }}
+                style={{ backgroundColor: "#1a1a1a", borderWidth: 1, borderColor: "#555" }}
               >
-                <ProfileButtonText>Remover</ProfileButtonText>
+                <ProfileButtonText style={{ color: "#ff4444" }}>Excluir</ProfileButtonText>
               </ProfileButton>
             </User>
           )}

@@ -29,7 +29,7 @@ export default class Cadastro extends Component {
 
   render() {
     return (
-      <BackgroundImage source={require("../../assets/bg-login.jpg")}>
+      <BackgroundImage source={require("../../assets/bg-login.png")} resizeMode="cover">
         <CadastroContainer>
           <Image
             source={require("../../assets/logo-pokedex-option-2.png")}
@@ -42,11 +42,13 @@ export default class Cadastro extends Component {
           />
           <CadastroInput
             placeholder="Nome de Treinador"
+            placeholderTextColor="#9094A6"
             value={this.state.nome}
             onChangeText={(nome) => this.setState({ nome })}
           />
           <CadastroInput
             placeholder="Senha"
+            placeholderTextColor="#9094A6"
             secureTextEntry={true}
             value={this.state.password}
             onChangeText={(password) => this.setState({ password })}

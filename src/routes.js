@@ -13,8 +13,8 @@ export default function Routes() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: "#AA0000" },
-          headerTintColor: "#FFD700",
+          headerStyle: { backgroundColor: "#1A1C23" },
+          headerTintColor: "#FBD743",
           headerTitleAlign: "center",
         }}
       >
