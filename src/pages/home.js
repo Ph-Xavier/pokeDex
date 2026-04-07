@@ -9,44 +9,44 @@ import {
   HomeInput,
   SubmitButton,
   List,
-  User,
-  Avatar,
-  Name,
-  Bio,
+  PokemonCard,
+  PokemonSprite,
+  PokemonName,
+  PokemonType,
   ProfileButton,
   ProfileButtonText,
 } from "../styles.js";
 
 export default class Home extends Component {
   state = {
-    newUser: "",
-    users: [],
+    newPokemon: "",
+    pokemons: [],
     loading: false,
   };
 
   async componentDidMount() {
-    const users = await AsyncStorage.getItem("users");
-    if (users) {
-      this.setState({ users: JSON.parse(users) });
+    const pokemons = await AsyncStorage.getItem("pokemons");
+    if (pokemons) {
+      this.setState({ pokemons: JSON.parse(pokemons) });
     }
   }
 
   componentDidUpdate(_, prevState) {
-    const { users } = this.state;
-    if (prevState.users !== users) {
-      AsyncStorage.setItem("users", JSON.stringify(users));
+    const { pokemons } = this.state;
+    if (prevState.pokemons !== pokemons) {
+      AsyncStorage.setItem("pokemons", JSON.stringify(pokemons));
     }
   }
 
-  handleAddUser = async () => {
+  handleAddPokemon = async () => {
     try {
-      const { newUser, users } = this.state;
-      if (!newUser.trim()) return;
+      const { newPokemon, pokemons } = this.state;
+      if (!newPokemon.trim()) return;
       this.setState({ loading: true });
 
-      const response = await api.get(`/api/v2/pokemon/${newUser.toLowerCase().trim()}`);
+      const response = await api.get(`/api/v2/pokemon/${newPokemon.toLowerCase().trim()}`);
 
-      if (users.find((u) => u.login === response.data.name)) {
+      if (pokemons.find((p) => p.login === response.data.name)) {
         alert("Pokémon já adicionado");
         this.setState({ loading: false });
         return;
@@ -55,14 +55,14 @@ export default class Home extends Component {
       const data = {
         login:  response.data.name,
         name:   response.data.name,
-        bio:    response.data.types.map((t) => t.type.name.toUpperCase()).join(" / "),
-        avatar: response.data.sprites.front_default,
+        types:  response.data.types.map((t) => t.type.name.toUpperCase()).join(" / "),
+        sprite: response.data.sprites.front_default,
         id:     response.data.id,
       };
 
       this.setState({
-        users: [...users, data],
-        newUser: "",
+        pokemons: [...pokemons, data],
+        newPokemon: "",
         loading: false,
       });
 
@@ -74,7 +74,7 @@ export default class Home extends Component {
   };
 
   render() {
-    const { newUser, users, loading } = this.state;
+    const { newPokemon, pokemons, loading } = this.state;
     return (
       <HomeContainer>
         <Form>
@@ -83,12 +83,12 @@ export default class Home extends Component {
             autoCapitalize="none"
             placeholder="NOME DO POKÉMON..."
             placeholderTextColor="#4A4E69"
-            value={newUser}
-            onChangeText={(text) => this.setState({ newUser: text })}
+            value={newPokemon}
+            onChangeText={(text) => this.setState({ newPokemon: text })}
             returnKeyType="send"
-            onSubmitEditing={this.handleAddUser}
+            onSubmitEditing={this.handleAddPokemon}
           />
-          <SubmitButton loading={loading} onPress={this.handleAddUser}>
+          <SubmitButton loading={loading} onPress={this.handleAddPokemon}>
             {loading ? (
               <ActivityIndicator color="#FBD743" />
             ) : (
@@ -99,13 +99,13 @@ export default class Home extends Component {
 
         <List
           showsVerticalScrollIndicator={false}
-          data={users}
-          keyExtractor={(user) => user.login}
+          data={pokemons}
+          keyExtractor={(pokemon) => pokemon.login}
           renderItem={({ item }) => (
-            <User>
-              <Avatar source={{ uri: item.avatar }} resizeMode="contain" />
-              <Name>{item.name}</Name>
-              <Bio>{item.bio}</Bio>
+            <PokemonCard>
+              <PokemonSprite source={{ uri: item.sprite }} resizeMode="contain" />
+              <PokemonName>{item.name}</PokemonName>
+              <PokemonType>{item.types}</PokemonType>
               <ProfileButton
                 onPress={() =>
                   this.props.navigation.navigate("pokemon", { pokemon: item })
@@ -116,14 +116,14 @@ export default class Home extends Component {
               <ProfileButton
                 onPress={() =>
                   this.setState({
-                    users: this.state.users.filter((u) => u.login !== item.login),
+                    pokemons: this.state.pokemons.filter((p) => p.login !== item.login),
                   })
                 }
                 style={{ backgroundColor: "#1a1a1a", borderWidth: 1, borderColor: "#555" }}
               >
                 <ProfileButtonText style={{ color: "#ff4444" }}>Excluir</ProfileButtonText>
               </ProfileButton>
-            </User>
+            </PokemonCard>
           )}
         />
       </HomeContainer>

@@ -3,9 +3,9 @@ import api from "../services/api.js";
 import {
   Container,
   Header,
-  AvatarPerfil,
-  NamePerfil,
-  BioPerfil,
+  PokemonImageDetail,
+  PokemonNameDetail,
+  PokemonInfoDetail,
   Moves,
   MoveItem,
   MoveSlot,
@@ -58,10 +58,10 @@ export default class Pokemon extends Component {
     return (
       <Container>
         <Header>
-          <AvatarPerfil source={{ uri: pokemon.avatar }} />
-          <NamePerfil>{pokemon.name}</NamePerfil>
-          <BioPerfil>{pokemon.bio}</BioPerfil>
-          <BioPerfil>{rarity}</BioPerfil>
+          <PokemonImageDetail source={{ uri: pokemon.sprite }} />
+          <PokemonNameDetail>{pokemon.name}</PokemonNameDetail>
+          <PokemonInfoDetail>{pokemon.types}</PokemonInfoDetail>
+          <PokemonInfoDetail>{rarity}</PokemonInfoDetail>
         </Header>
 
         <Moves

@@ -19,13 +19,13 @@ import {
 } from "../styles";
 
 const Login = () => {
-  const [nome, setNome] = useState("");
-  const [password, setPassword] = useState("");
+  const [trainerName, setTrainerName] = useState("");
+  const [trainerPassword, setTrainerPassword] = useState("");
   const navigation = useNavigation();
 
   const handleLogin = async () => {
-    const user = await AsyncStorage.getItem("user");
-    if (!user) {
+    const trainer = await AsyncStorage.getItem("trainer");
+    if (!trainer) {
       Alert.alert(
         "Erro",
         "Nenhum treinador cadastrado. Por favor, cadastre-se.",
@@ -33,8 +33,9 @@ const Login = () => {
       return;
     }
 
-    const userJson = JSON.parse(user);
-    if (userJson.nome === nome && userJson.password === password) {
+    const trainerJson = JSON.parse(trainer);
+    
+    if (trainerJson.trainerName === trainerName && trainerJson.trainerPassword === trainerPassword) {
       navigation.navigate("home");
     } else {
       Alert.alert("Erro", "Nome ou senha incorretos.");
@@ -58,7 +59,7 @@ const Login = () => {
           <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
             scrollEnabled={true}
-            keyboardShouldPersistTaps="handled"
+            keyboardShouldPersistTaps="handled" // Fecha o teclado se tocar fora
           >
             <FormContainer>
               <Image
@@ -68,14 +69,14 @@ const Login = () => {
               <InputRow>
                 <InputHalf
                   placeholder="Nome"
-                  value={nome}
-                  onChangeText={setNome}
+                  value={trainerName}
+                  onChangeText={setTrainerName}
                   placeholderTextColor="#9094A6"
                 />
                 <InputHalf
                   placeholder="Senha"
-                  value={password}
-                  onChangeText={setPassword}
+                  value={trainerPassword}
+                  onChangeText={setTrainerPassword}
                   secureTextEntry={true}
                   placeholderTextColor="#9094A6"
                 />

@@ -10,20 +10,21 @@ import {
 } from "../styles";
 
 export default class Cadastro extends Component {
-  state = { nome: "", password: "" };
+  state = { trainerName: "", trainerPassword: "" };
 
   handleCadastro = async () => {
-    const { nome, password } = this.state;
+    const { trainerName, trainerPassword } = this.state;
 
-    if (!nome || !password) {
+    if (!trainerName || !trainerPassword) {
       alert("Preencha todos os campos.");
       return;
     }
 
-    const user = { nome, password };
+    const trainer = { trainerName, trainerPassword };
 
-    await AsyncStorage.setItem("user", JSON.stringify(user));
+    await AsyncStorage.setItem("trainer", JSON.stringify(trainer));
     alert("Treinador cadastrado com sucesso!");
+    
     this.props.navigation.navigate("login");
   };
 
@@ -43,15 +44,15 @@ export default class Cadastro extends Component {
           <CadastroInput
             placeholder="Nome de Treinador"
             placeholderTextColor="#9094A6"
-            value={this.state.nome}
-            onChangeText={(nome) => this.setState({ nome })}
+            value={this.state.trainerName}
+            onChangeText={(trainerName) => this.setState({ trainerName })}
           />
           <CadastroInput
             placeholder="Senha"
             placeholderTextColor="#9094A6"
             secureTextEntry={true}
-            value={this.state.password}
-            onChangeText={(password) => this.setState({ password })}
+            value={this.state.trainerPassword}
+            onChangeText={(trainerPassword) => this.setState({ trainerPassword })}
           />
           <CadastroButton onPress={this.handleCadastro}>
             <CadastroButtonText>Cadastrar</CadastroButtonText>

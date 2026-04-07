@@ -178,7 +178,7 @@ export const List = styled.FlatList`
 `;
 
 /* Card do pokémon */
-export const User = styled.View`
+export const PokemonCard = styled.View`
   background-color: ${colors.card};
   border-radius: 4px;
   padding: 16px;
@@ -192,7 +192,7 @@ export const User = styled.View`
 `;
 
 /* Sprite em fundo claro (contraste com o app escuro) */
-export const Avatar = styled.Image`
+export const PokemonSprite = styled.Image`
   width: 96px;
   height: 96px;
   background-color: #e8e8e0;
@@ -201,7 +201,7 @@ export const Avatar = styled.Image`
   border-radius: 4px;
 `;
 
-export const Name = styled.Text`
+export const PokemonName = styled.Text`
   font-size: 14px;
   color: ${colors.accent};
   font-weight: bold;
@@ -211,7 +211,7 @@ export const Name = styled.Text`
   text-transform: uppercase;
 `;
 
-export const Bio = styled.Text`
+export const PokemonType = styled.Text`
   font-size: 11px;
   color: ${colors.lcd};
   text-align: center;
@@ -250,7 +250,7 @@ export const Header = styled.View`
   border-bottom-color: ${colors.primary};
 `;
 
-export const AvatarPerfil = styled.Image`
+export const PokemonImageDetail = styled.Image`
   width: 120px;
   height: 120px;
   background-color: #e8e8e0;
@@ -259,7 +259,7 @@ export const AvatarPerfil = styled.Image`
   border-radius: 4px;
 `;
 
-export const NamePerfil = styled.Text`
+export const PokemonNameDetail = styled.Text`
   font-size: 20px;
   color: ${colors.accent};
   font-weight: bold;
@@ -268,7 +268,7 @@ export const NamePerfil = styled.Text`
   text-transform: uppercase;
 `;
 
-export const BioPerfil = styled.Text`
+export const PokemonInfoDetail = styled.Text`
   font-size: 11px;
   color: ${colors.lcd};
   margin-top: 5px;
